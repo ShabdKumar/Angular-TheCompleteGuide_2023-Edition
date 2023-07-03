@@ -1,6 +1,11 @@
 p {
     color: aliceblue;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    padding: 20px;
+    background-color: mistyrose;
+    border: 1px double red;
+    box-shadow: 5px 5px 5px red;
+    text-align: center;
 }
 
 .para1 {
