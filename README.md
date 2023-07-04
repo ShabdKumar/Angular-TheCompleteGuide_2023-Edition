@@ -26,6 +26,25 @@ _Here are some common issues & solutions:_
 - You get an EADDR error (Address already in use). You might already have another ng serve process running - make sure to quit that or use `ng serve --port ANOTHERPORT` to serve your project on a new port.
 - My changes are not reflected in the browser (App is not compiling). Check if the window running `ng serve` displays an error. If that's not the case, make sure you're using the latest CLI version and try restarting your CLI.
 
+### Bootstrap styling in project:
+
+`npm install --save bootstrap@3`
+
+Update style in angular.json file:
+
+```json
+"styles": [
+    "node_modules/bootstrap/dist/css/bootstrap.min.css",
+    "src/styles.css"
+],
+```
+
+### Component Creation:
+
+`ng generate component component_name`
+
+or `ng g c component_name`
+
 ### Two-Way-Databinding:
 
 For Two-Way-Binding to work, you need to enable the `ngModel` directive. This is done by adding the `FormsModule` to the `imports[]` array in the AppModule.

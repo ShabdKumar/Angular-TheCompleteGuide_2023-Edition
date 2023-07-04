@@ -1,0 +1,15 @@
+p {
+    padding: 5px;
+    margin-top: 5px;
+    border: 1px black;
+    background-color: bisque;
+    height: 28px;
+    color: red;
+    box-shadow: 2px 2px 2px 1px rgba(0, 0, 255, .2);
+    font-family: 'Courier New', Courier, monospace;
+}
+
+button {
+    color:yellow;
+    margin-top: 5px;
+}
