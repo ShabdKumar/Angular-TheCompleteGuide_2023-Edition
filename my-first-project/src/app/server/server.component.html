@@ -1,1 +1,30 @@
-<p>This is server component.</p>
+<h3 id="a1">This is server component.</h3>
+
+
+<!-- String Interpolation: -->
+
+<p>{{ 'Server'}} with id {{ serverId }} is {{ getServerStatus() }}.</p>
+
+
+<!-- Property Binding & Event Binding -->
+
+<button 
+    class="btn btn-primary" 
+    [disabled]="!allowNewServer" 
+    (click)="onServerCreation()">Add Server</button>
+
+<p>{{ serverCreationStatus }}</p>
+
+<p>{{ allowNewServer }}</p>     <!-- String Interpolation: -->
+<p [innerText]="allowNewServer"></p>        <!-- Property Binding: -->
+
+<input
+    type="text"
+    class="form-control"
+    (input)="onUpdateServerName($event)">
+<p>{{ serverName }}</p>
+
+<input
+    type="text"
+    class="form-control"
+    [(ngModel)]=serverName>

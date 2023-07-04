@@ -9,6 +9,5 @@ export class AppComponent {
   title: "my-first-project"
 
   constructor() {
-    alert("Bhuvan");
   }
 }

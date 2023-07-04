@@ -19,3 +19,19 @@ Master Angular (formerly "Angular 2") and build awesome, reactive web apps with 
 * Go inside your repository: `cd project_name`
 
 * For continous running your project in background: `ng serve`
+
+_Here are some common issues & solutions:_
+
+- Creation of a new project takes forever (longer than 3 minutes). That happens on Windows from time to time => Try running the command line as administrator.
+- You get an EADDR error (Address already in use). You might already have another ng serve process running - make sure to quit that or use `ng serve --port ANOTHERPORT` to serve your project on a new port.
+- My changes are not reflected in the browser (App is not compiling). Check if the window running `ng serve` displays an error. If that's not the case, make sure you're using the latest CLI version and try restarting your CLI.
+
+### Two-Way-Databinding:
+
+For Two-Way-Binding to work, you need to enable the `ngModel` directive. This is done by adding the `FormsModule` to the `imports[]` array in the AppModule.
+
+You then also need to add the import from `@angular/forms` in the `app.module.ts` file:
+
+```ts
+import { FormsModule } from '@angular/forms';
+```
