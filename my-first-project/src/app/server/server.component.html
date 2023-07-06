@@ -1,13 +1,12 @@
 <h3 id="a1">This is server component.</h3>
 
 
-<!-- String Interpolation: -->
-
+<label>String Manipulation</label>
 <p>{{ 'Server'}} with id {{ serverId }} is {{ getServerStatus() }}.</p>
 
 
-<!-- Property Binding & Event Binding -->
-
+<label>Property Binding & Event Binding:</label>
+<br>
 <button 
     class="btn btn-primary" 
     [disabled]="!allowNewServer" 
@@ -24,7 +23,31 @@
     (input)="onUpdateServerName($event)">
 <p>{{ serverName }}</p>
 
+<hr>
+<label>Two way data-binding:</label>
+<br>
 <input
     type="text"
     class="form-control"
-    [(ngModel)]=serverName>
+    [(ngModel)]="serverName">
+
+<hr>
+<label>Directives (ngif):</label>
+<br>
+<input 
+    type="text" 
+    class="form-control" 
+    [(ngModel)]="serverName1">
+<button 
+    class="btn btn-primary" 
+    [disabled]="!allowNewServer" 
+    (click)="onAddServer()">Add Server</button>
+
+<p *ngIf="hiding">Server was created with server name {{ serverName1 }}</p>
+
+<hr>
+<label>Directives (ngstyles) (ngClass):</label>
+<br>
+<p 
+    [ngStyle]="{backgroundColor: getColor()}"
+    [ngClass]="{online: serverStatus === 'online'}">Server with name {{ serverName1 }} is {{ getServerStatus() }}.</p>

@@ -20,7 +20,7 @@ Master Angular (formerly "Angular 2") and build awesome, reactive web apps with 
 
 * For continous running your project in background: `ng serve`
 
-_Here are some common issues & solutions:_
+**_Here are some common issues & solutions:_**
 
 - Creation of a new project takes forever (longer than 3 minutes). That happens on Windows from time to time => Try running the command line as administrator.
 - You get an EADDR error (Address already in use). You might already have another ng serve process running - make sure to quit that or use `ng serve --port ANOTHERPORT` to serve your project on a new port.
