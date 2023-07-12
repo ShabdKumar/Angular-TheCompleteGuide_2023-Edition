@@ -6,6 +6,6 @@ import { Component, Input } from '@angular/core';
   styleUrls: ['./output.component.css']
 })
 export class OutputComponent {
-  @Input() element: {type: string, name: string, content: string};
+  @Input() element: {type: string, name: string, content: string, details: string};
 
 }
