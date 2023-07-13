@@ -1,0 +1,29 @@
+<form>
+  <div class="row">
+    <div class="col-xs-5">
+      <label for="first-name">First Name</label>
+      <input
+        type="text"
+        id="first-name"
+        class="form-control"
+        [(ngModel)]="firstName"
+        name="first"
+      />
+      <label for="last-name">Last Name</label>
+      <input
+        type="text"
+        id="last-name"
+        class="form-control"
+        [(ngModel)]="lastName"
+        name="last"
+      />
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-5">
+      <button type="button" class="btn btn-primary" (click)="onUpdateName()">
+        Update Name
+      </button>
+    </div>
+  </div>
+</form>
