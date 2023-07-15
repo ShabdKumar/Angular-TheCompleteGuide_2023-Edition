@@ -8,6 +8,7 @@
         </strong>
         <em *ngIf="element.type === 'blueprint'">{{ element.content }}: {{element.details}}</em>
       </p>
+      <ng-content></ng-content>
     </div>
   </div>
 </div>
