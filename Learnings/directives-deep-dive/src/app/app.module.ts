@@ -8,6 +8,7 @@ import { BasicHighlightDirective } from './basic-highlight/basic-highlight.direc
 import { BetterHighlightDirective } from './better-highlight/better-highlight.directive';
 import { MouseOverHighlightDirective } from './mouse-over-highlight/mouse-over-highlight.directive';
 import { MouseOverBetterHighlightDirective } from './mouse-over-better-highlight/mouse-over-better-highlight.directive';
+import { UnlessDirective } from './unless/unless.directive';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { MouseOverBetterHighlightDirective } from './mouse-over-better-highlight
     BasicHighlightDirective,
     BetterHighlightDirective,
     MouseOverHighlightDirective,
-    MouseOverBetterHighlightDirective
+    MouseOverBetterHighlightDirective,
+    UnlessDirective
   ],
   imports: [
     BrowserModule,

@@ -9,7 +9,7 @@ export class AppComponent {
   numbers: number[] = [1, 2, 3, 4, 5, 6];
   oddNumbers: number[] = [];
   evenNumbers: number[] = [];
-  onlyOdd = false;
+  onlyOdd = true;
 
   constructor() {
     for (let number of this.numbers) {

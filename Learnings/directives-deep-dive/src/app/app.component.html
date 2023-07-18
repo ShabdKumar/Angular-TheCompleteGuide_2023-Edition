@@ -1,28 +1,60 @@
 <div class="container">
   <div class="row">
     <div class="col-xs-12">
-      <button class="btn btn-primary" id='button1' (click)="onlyOdd = !onlyOdd">Only show odd
+      <button class="btn btn-primary" id='button1'
+        (click)="onlyOdd = !onlyOdd">Only show odd
         numbers</button>
       <br><br>
       <ul class="list-group">
-        <div *ngIf="onlyOdd">
-          <li class="list-group-item" *ngFor="let number of oddNumbers"
-          [ngClass]="{oddNumbers: number % 2 !== 0}"
-          [ngStyle]="{backgroundColor: number % 2 == 0 ? 'aqua' : 'yellow'}">{{number }}
-          </li>
-        </div>
+
         <div *ngIf="!onlyOdd">
-          <li class="list-group-item" *ngFor="let number of evenNumbers"
-          [ngClass]="{oddNumbers: number % 2 !== 0}"
-          [ngStyle]="{backgroundColor: number % 2 == 0 ? 'aqua' : 'yellow'}">{{ number }}
+          <li class="list-group-item" *ngFor="let number of oddNumbers"
+            [ngClass]="{oddNumbers: number % 2 !== 0}"
+            [ngStyle]="{backgroundColor: number % 2 == 0 ? 'aqua' : 'yellow'}">
+            {{number }}
           </li>
         </div>
+
+        <!-- Alternate Way - Using custom structural directive -->
+        <div *appUnless="onlyOdd">
+          <li class="list-group-item" *ngFor="let number of oddNumbers"
+            [ngClass]="{oddNumbers: number % 2 !== 0}"
+            [ngStyle]="{backgroundColor: number % 2 == 0 ? 'aqua' : 'yellow'}">
+            {{number }}
+          </li>
+        </div>
+
+        <div *ngIf="onlyOdd">
+          <li class="list-group-item" *ngFor="let number of evenNumbers"
+            [ngClass]="{oddNumbers: number % 2 !== 0}"
+            [ngStyle]="{backgroundColor: number % 2 == 0 ? 'aqua' : 'yellow'}">
+            {{ number }}
+          </li>
+        </div>
+
+        <!-- Alternate Way - Using ngIf as attribute directive instead of structural directives -->
+        <ng-template [ngIf]="onlyOdd">
+          <div>
+            <li class="list-group-item" *ngFor="let number of evenNumbers"
+              [ngClass]="{oddNumbers: number % 2 !== 0}"
+              [ngStyle]="{backgroundColor: number % 2 == 0 ? 'aqua' : 'yellow'}">
+              {{ number }}
+            </li>
+          </div>
+        </ng-template>
+
       </ul>
       <p appBasicHighlight>Custom Attribute directive Test - ElementRef></p>
-      <p appBetterHighlight>Custom Attribute directive Test - ElementRef, Renderer</p>
-      <p appMouseOverHighlight>Custom Attribute directive Test - Hostlistener, Renderer</p>
+      <p appBetterHighlight>Custom Attribute directive Test - ElementRef,
+        Renderer
+      </p>
+      <p appMouseOverHighlight>Custom Attribute directive Test - Hostlistener,
+        Renderer</p>
       <!-- <p appMouseOverBetterHighlight [defaultColor]="'transparent'" [highlightColor]="'#F9B7FF'">Custom Attribute directive Test - Hostlistener, Hostbinding (Best way)</p> -->
-      <p [appMouseOverBetterHighlight]="'#F9B7FF'" [defaultColor]="'transparent'">Custom Attribute directive Test - Hostlistener, Hostbinding (Best way)</p>
+      <p [appMouseOverBetterHighlight]="'#F9B7FF'"
+        [defaultColor]="'transparent'">
+        Custom Attribute directive Test - Hostlistener, Hostbinding (Best way)
+      </p>
     </div>
   </div>
 </div>
