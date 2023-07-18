@@ -62,3 +62,21 @@ import { FormsModule } from '@angular/forms';
 `ng generate directive directive_name` --skip-tests
 
 or `ng g d directive_name` --skip-tests
+
+### Dropdown Directives:
+
+If you want that a dropdown can also be closed by a click anywhere outside (which also means that a click on one dropdown closes any other one, btw.), replace the code of `dropdown.directive.ts`
+
+```ts
+import {Directive, ElementRef, HostBinding, HostListener} from '@angular/core';
+@Directive({
+  selector: '[appDropdown]'
+})
+export class DropdownDirective {
+  @HostBinding('class.open') isOpen = false;
+  @HostListener('document:click', ['$event']) toggleOpen(event: Event) {
+    this.isOpen = this.elRef.nativeElement.contains(event.target) ? !this.isOpen : false;
+  }
+  constructor(private elRef: ElementRef) {}
+}
+```
