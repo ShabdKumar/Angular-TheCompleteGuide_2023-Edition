@@ -41,9 +41,11 @@ Update style in angular.json file:
 
 ### Component Creation:
 
-`ng generate component component_name`
+`ng generate component component_name` --skip-tests
 
-or `ng g c component_name`
+or `ng g c component_name` --skip-tests
+
+**Note:** `--skip-tests` will not generate test file i.e. spec.ts file.
 
 ### Two-Way-Databinding:
 
@@ -54,3 +56,9 @@ You then also need to add the import from `@angular/forms` in the `app.module.ts
 ```ts
 import { FormsModule } from '@angular/forms';
 ```
+
+### Directive Creation:
+
+`ng generate directive directive_name` --skip-tests
+
+or `ng g d directive_name` --skip-tests
