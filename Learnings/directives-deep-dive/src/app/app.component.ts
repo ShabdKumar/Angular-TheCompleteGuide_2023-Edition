@@ -6,10 +6,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'RecipeBook';
-  impFeature = 'recipe';
-
-  onNavigation(impFeature: string) {
-      this.impFeature = impFeature;
-  }
+  title = 'directives-deep-dive';
 }
