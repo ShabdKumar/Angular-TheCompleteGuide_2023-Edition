@@ -6,5 +6,18 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'directives-deep-dive';
+  numbers: number[] = [1, 2, 3, 4, 5, 6];
+  oddNumbers: number[] = [];
+  evenNumbers: number[] = [];
+  onlyOdd = false;
+
+  constructor() {
+    for (let number of this.numbers) {
+      if (number % 2 == 0) {
+        this.evenNumbers.push(number);
+      } else {
+        this.oddNumbers.push(number);
+      }
+    }
+  }
 }
