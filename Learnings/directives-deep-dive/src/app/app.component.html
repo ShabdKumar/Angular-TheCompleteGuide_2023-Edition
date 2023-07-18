@@ -17,8 +17,12 @@
           [ngStyle]="{backgroundColor: number % 2 == 0 ? 'aqua' : 'yellow'}">{{ number }}
           </li>
         </div>
-        <li appHighlight>Custom directive Test</li>
       </ul>
+      <p appBasicHighlight>Custom Attribute directive Test - ElementRef></p>
+      <p appBetterHighlight>Custom Attribute directive Test - ElementRef, Renderer</p>
+      <p appMouseOverHighlight>Custom Attribute directive Test - Hostlistener, Renderer</p>
+      <!-- <p appMouseOverBetterHighlight [defaultColor]="'transparent'" [highlightColor]="'#F9B7FF'">Custom Attribute directive Test - Hostlistener, Hostbinding (Best way)</p> -->
+      <p [appMouseOverBetterHighlight]="'#F9B7FF'" [defaultColor]="'transparent'">Custom Attribute directive Test - Hostlistener, Hostbinding (Best way)</p>
     </div>
   </div>
 </div>
