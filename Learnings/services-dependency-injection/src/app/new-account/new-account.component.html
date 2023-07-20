@@ -2,10 +2,7 @@
   <div class="col-xs-12 col-md-8 col-md-offset-2">
     <div class="form-group">
       <label>Account Name</label>
-      <input
-        type="text"
-        class="form-control"
-        #accountName>
+      <input type="text" class="form-control" #accountName />
     </div>
     <div class="form-group">
       <select class="form-control" #status>
@@ -16,9 +13,13 @@
     </div>
     <button
       class="btn btn-primary"
-      (click)="onCreateAccount(accountName.value, status.value)">
+      (click)="onCreateAccount(accountName.value, status.value)"
+    >
       Add Account
+    </button>
+
+    <button class="btn btn-primary" (click)="unsubscribeStatusUpdate()">
+      Unsubscribe Status Update
     </button>
   </div>
 </div>
-

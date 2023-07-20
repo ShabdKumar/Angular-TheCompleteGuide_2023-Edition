@@ -2,9 +2,7 @@
 
 Master Angular (formerly "Angular 2") and build awesome, reactive web apps with the successor of Angular.js
 
-## Getting Started:
-
-### Angular Setup:
+## Angular Setup:
 
 - Go to https://nodejs.org/en and download the latest version, make sure that you have the LTS version of NodeJS installed, NOT the latest version.
 
@@ -12,7 +10,7 @@ Master Angular (formerly "Angular 2") and build awesome, reactive web apps with 
 
 * `[sudo] npm install -g @angular/cli`
 
-### Creation of New Project:
+## Creation of New Project:
 
 - `ng new project_name --no-strict`
 
@@ -39,7 +37,7 @@ Update style in angular.json file:
 ],
 ```
 
-### Component Creation:
+## Component Creation:
 
 `ng generate component component_name` --skip-tests
 
@@ -57,7 +55,7 @@ You then also need to add the import from `@angular/forms` in the `app.module.ts
 import { FormsModule } from '@angular/forms';
 ```
 
-### Directive Creation:
+## Directive Creation:
 
 `ng generate directive directive_name` --skip-tests
 
@@ -80,3 +78,29 @@ export class DropdownDirective {
   constructor(private elRef: ElementRef) {}
 }
 ```
+
+## Services in Angular 6+
+
+If you're using Angular 6+, you can provide application-wide services in a different way.
+
+Instead of adding a service class to the `providers[]`` array in `AppModule`` , you can set the following config in `@Injectable()`` :
+
+```ts
+@Injectable({providedIn: 'root'})
+export class MyService { ... }
+```
+
+This is exactly the same as:
+
+```ts
+export class MyService { ... }
+```
+```ts
+import { MyService } from './path/to/my.service';
+@NgModule({
+    ...
+    providers: [MyService]
+})
+export class AppModule { ... }
+```
+Using this new syntax is **completely optional**, the traditional syntax (using `providers[]` ) will still work. The "new syntax" does offer one advantage though: Services **can be loaded lazily** by Angular (behind the scenes) and redundant code can be removed automatically. This can lead to a better performance and loading speed - though this really only kicks in for bigger services and apps in general.
