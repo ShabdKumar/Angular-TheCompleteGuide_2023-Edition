@@ -83,7 +83,7 @@ export class DropdownDirective {
 
 If you're using Angular 6+, you can provide application-wide services in a different way.
 
-Instead of adding a service class to the `providers[]`` array in `AppModule`` , you can set the following config in `@Injectable()`` :
+Instead of adding a service class to the `providers[]` array in `AppModule` , you can set the following config in `@Injectable()` :
 
 ```ts
 @Injectable({providedIn: 'root'})
