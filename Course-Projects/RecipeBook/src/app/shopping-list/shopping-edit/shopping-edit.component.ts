@@ -1,24 +1,21 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component } from '@angular/core';
 import { Ingredient } from 'src/app/shared/ingredient.model';
+import { ShoppingListService } from '../shopping-list.service';
 
 @Component({
   selector: 'app-shopping-edit',
   templateUrl: './shopping-edit.component.html',
-  styleUrls: ['./shopping-edit.component.css']
+  styleUrls: ['./shopping-edit.component.css'],
 })
 export class ShoppingEditComponent {
-  @Output() ingredientAdded = new EventEmitter<Ingredient>();
+
+  constructor(private shoppingListService: ShoppingListService) {}
 
   onAdd(name, amount) {
-    const ingredient = new Ingredient(name.value, amount.value);
-    this.ingredientAdded.emit(ingredient);
+    this.shoppingListService.onAddingIngredient(new Ingredient(name.value, amount.value));
   }
 
-  onRemove() {
+  onRemove() {}
 
-  }
-
-  onClear() {
-
-  }
+  onClear() {}
 }
