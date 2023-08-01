@@ -123,3 +123,13 @@ To fix this behavior, you need to change the matching strategy to `"full"` :
 { path: '', redirectTo: '/somewhere-else', pathMatch: 'full' }
 ```
 Now, you only get redirected, if the full path is `''` .
+
+## Install RxJS
+
+In order to follow along smoothly with the course examples, make sure you install RxJS v6 by running
+
+`npm install --save rxjs@6`
+
+In addition, also install the rxjs-compat package:
+
+`npm install --save rxjs-compat`
