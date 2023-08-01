@@ -38,8 +38,12 @@ export class RecipeService {
     ),
   ];
 
-  getRecipe() {
+  getRecipes() {
     return this.recipesList.slice();
+  }
+
+  getRecipe(id) {
+    return this.recipesList[id];
   }
 
   recipeSelect = new EventEmitter<Recipe>();
