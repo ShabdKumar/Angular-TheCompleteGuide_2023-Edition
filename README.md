@@ -124,12 +124,14 @@ To fix this behavior, you need to change the matching strategy to `"full"` :
 ```
 Now, you only get redirected, if the full path is `''` .
 
-## Install RxJS
+## Observables: Install RxJS
 
-In order to follow along smoothly with the course examples, make sure you install RxJS v6 by running
+In order to follow along smoothly with the course examples, make sure you install RxJS by running
 
-`npm install --save rxjs@6`
+`npm install --save rxjs@latest`
 
-In addition, also install the rxjs-compat package:
+Official Docs: https://rxjs-dev.firebaseapp.com/
 
-`npm install --save rxjs-compat`
+RxJS Series: https://academind.com/learn/javascript/understanding-rxjs/
+
+Updating to RxJS 6: https://academind.com/learn/javascript/rxjs-6-what-changed/
