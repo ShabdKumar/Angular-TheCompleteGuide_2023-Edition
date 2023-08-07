@@ -1,4 +1,4 @@
-import { EventEmitter, Injectable } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { Recipe } from './recipe.model';
 import { Ingredient } from '../shared/ingredient.model';
 import { ShoppingListService } from '../shopping-list/shopping-list.service';
@@ -28,7 +28,7 @@ export class RecipeService {
     ),
     new Recipe(
       'Hyderabadi Chicken Biryani',
-      "A flavourful and delicious combination of aromatic spices and juicy chicken with perfectly cooked rice.",
+      'A flavourful and delicious combination of aromatic spices and juicy chicken with perfectly cooked rice.',
       'https://c.recipeland.com/images/r/22174/6c1cf49db014a670f44a_1024.webp',
       [
         new Ingredient('Chicken', 4),
@@ -45,8 +45,6 @@ export class RecipeService {
   getRecipe(id) {
     return this.recipesList[id];
   }
-
-  recipeSelect = new EventEmitter<Recipe>();
 
   addIngredientToShoppingList(ingredient: Ingredient[]) {
     this.shoppingListService.addIngredients(ingredient);
