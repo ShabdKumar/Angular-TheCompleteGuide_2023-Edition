@@ -78,7 +78,7 @@ export class AppComponent implements OnInit {
           resolve({ emailIsForbidden: true });
         }
         resolve(null);
-      }, 1500);
+      }, 5000);
     });
     return promise;
   }

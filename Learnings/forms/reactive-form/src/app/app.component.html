@@ -49,26 +49,15 @@
               "
               ><span
                 *ngIf="
-                  signUpForm.get('userData.email').errors &&
-                  signUpForm.get('userData.email').errors['emailIsForbidden']
+                  signUpForm.get('userData.email').errors?.emailIsForbidden
                 "
               >
                 Email is Forbidden.
               </span>
-              <span
-                *ngIf="
-                  signUpForm.get('userData.email').errors &&
-                  signUpForm.get('userData.email').errors['required']
-                "
-              >
+              <span *ngIf="signUpForm.get('userData.email').errors?.required">
                 Email can't be empty.
               </span>
-              <span
-                *ngIf="
-                  signUpForm.get('userData.email').errors &&
-                  signUpForm.get('userData.email').errors['email']
-                "
-              >
+              <span *ngIf="signUpForm.get('userData.email').errors?.email">
                 Please enter a valid email id.
               </span></span
             >
@@ -100,9 +89,9 @@
             <input type="text" class="form-control" [formControlName]="i" />
           </div>
         </div>
-        <span class="help-block" *ngIf="!signUpForm.valid && signUpForm.touched"
+        <!-- <span class="help-block" *ngIf="!signUpForm.valid && signUpForm.touched"
           >Please enter valid data!</span
-        >
+        > -->
         <button class="btn btn-primary" type="submit">Submit</button>
       </form>
     </div>
