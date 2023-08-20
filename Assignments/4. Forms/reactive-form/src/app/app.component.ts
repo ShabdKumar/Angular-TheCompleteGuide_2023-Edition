@@ -10,7 +10,7 @@ import { Observable } from 'rxjs/internal/Observable';
 export class AppComponent implements OnInit {
   projectStatusForm: FormGroup;
   status = ['Stable', 'Critical', 'Finished'];
-  defaultStatus = 'Stable';
+  haha = 'hahaha';
 
   ngOnInit() {
     this.projectStatusForm = new FormGroup({
@@ -23,17 +23,22 @@ export class AppComponent implements OnInit {
         [Validators.required, Validators.email],
         this.forbiddenEmails.bind(this)
       ),
-      projectStatus: new FormControl(null),
+      projectStatus: new FormControl('Stable'),
     });
 
-    this.projectStatusForm.patchValue({
-      projectStatus: this.defaultStatus,
-    });
+    // this.projectStatusForm.patchValue({
+    //   projectStatus: this.defaultStatus,
+    // });
   }
 
   onSubmit() {
     console.log(this.projectStatusForm);
-    alert('Your Form is submitted.');
+    for (let key in this.projectStatusForm.controls) {
+      this.projectStatusForm.get(key).markAsTouched();
+    }
+    if (this.projectStatusForm.valid) {
+      alert('Your Form is submitted.');
+    }
   }
 
   onReset() {
