@@ -10,21 +10,23 @@ import { Observable } from 'rxjs/internal/Observable';
 export class AppComponent implements OnInit {
   projectStatusForm: FormGroup;
   status = ['Stable', 'Critical', 'Finished'];
-  haha = 'hahaha';
 
   ngOnInit() {
-    this.projectStatusForm = new FormGroup({
-      projectName: new FormControl(null, [
-        Validators.required,
-        this.forbiddenName.bind(this),
-      ]),
-      email: new FormControl(
-        null,
-        [Validators.required, Validators.email],
-        this.forbiddenEmails.bind(this)
-      ),
-      projectStatus: new FormControl('Stable'),
-    });
+    this.projectStatusForm = new FormGroup(
+      {
+        projectName: new FormControl(null, [
+          Validators.required,
+          this.forbiddenName.bind(this),
+        ]),
+        email: new FormControl(
+          null,
+          [Validators.required, Validators.email],
+          this.forbiddenEmails.bind(this)
+        ),
+        projectStatus: new FormControl('Stable'),
+      },
+      { updateOn: 'submit' }
+    );
 
     // this.projectStatusForm.patchValue({
     //   projectStatus: this.defaultStatus,
