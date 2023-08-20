@@ -45,7 +45,7 @@
           <span
             class="help-block"
             *ngIf="
-              !projectStatusForm.get('projectName').valid &&
+              projectStatusForm.get('projectName').invalid &&
               projectStatusForm.get('projectName').touched
             "
             ><span
@@ -69,13 +69,14 @@
             class="form-control"
             formControlName="email"
           />
+          valid? {{ projectStatusForm.get("email").valid }}
           <span
             class="help-block"
             *ngIf="
-              !projectStatusForm.get('email').valid &&
+              projectStatusForm.get('email').invalid &&
               projectStatusForm.get('email').touched
             "
-            ><span *ngIf="projectStatusForm.get('email').errors['required']"
+            ><span *ngIf="projectStatusForm.get('email')?.errors?.required"
               >Email can not be empty.</span
             ><span
               *ngIf="projectStatusForm.get('email')?.errors?.emailIsForbidden"
@@ -87,10 +88,7 @@
         </div>
         <div class="form-group">
           <label for="status">Project Status:</label>
-          <select
-            class="form-control"
-            formControlName="projectStatus"
-          >
+          <select class="form-control" formControlName="projectStatus">
             <option *ngFor="let stat of status" [value]="stat">
               {{ stat }}
             </option>

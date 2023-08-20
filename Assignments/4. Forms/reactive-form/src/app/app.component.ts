@@ -27,10 +27,6 @@ export class AppComponent implements OnInit {
       },
       { updateOn: 'submit' }
     );
-
-    // this.projectStatusForm.patchValue({
-    //   projectStatus: this.defaultStatus,
-    // });
   }
 
   onSubmit() {
@@ -45,6 +41,9 @@ export class AppComponent implements OnInit {
 
   onReset() {
     this.projectStatusForm.reset();
+    this.projectStatusForm.patchValue({
+      projectStatus: 'Stable',
+    });
   }
 
   forbiddenName(control: FormControl): { [s: string]: boolean } {
@@ -61,7 +60,7 @@ export class AppComponent implements OnInit {
           resolve({ emailIsForbidden: true });
         }
         resolve(null);
-      }, 1000);
+      }, 50000);
     });
     return promise;
   }
