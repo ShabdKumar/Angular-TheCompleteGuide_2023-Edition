@@ -2,16 +2,22 @@ import { Injectable } from '@angular/core';
 import { Recipe } from './recipe.model';
 import { Ingredient } from '../shared/ingredient.model';
 import { ShoppingListService } from '../shopping-list/shopping-list.service';
+import { Subject } from 'rxjs/internal/Subject';
 
 @Injectable({ providedIn: 'root' })
 export class RecipeService {
+
+  constructor(private shoppingListService: ShoppingListService) {}
+
+  recipeChanged = new Subject<Recipe[]>();
+
   private recipesList: Recipe[] = [
     new Recipe(
-      'Apple-Glazed Roast Pork- Crockpot',
+      'Apple - Glazed Roast Pork - Crockpot',
       'Another simple crockpot recipe where a pork-loin roast meets a delicious glaze which creates a wonderful dinner you will love.',
       'https://c.recipeland.com/images/r/1515/cb5c9d72016753d29df9_1024.webp',
       [
-        new Ingredient('Pork loin Roast', 4),
+        new Ingredient('Pork Loin Roast', 4),
         new Ingredient('Apple', 2),
         new Ingredient('Apple Juice', 1),
       ]
@@ -46,9 +52,22 @@ export class RecipeService {
     return this.recipesList[id];
   }
 
+  onAddRecipe(newRecipe) {
+    this.recipesList.push(newRecipe);
+    this.recipeChanged.next(this.recipesList.slice());
+  }
+
+  onUpdateRecipe(index: number, updatedRecipe: Recipe) {
+    this.recipesList[index] = updatedRecipe;
+    this.recipeChanged.next(this.recipesList.slice());
+  }
+
   addIngredientToShoppingList(ingredient: Ingredient[]) {
     this.shoppingListService.addIngredients(ingredient);
   }
 
-  constructor(private shoppingListService: ShoppingListService) {}
+  deleteRecipe(index: number) {
+    this.recipesList.splice(index, 1);
+    this.recipeChanged.next(this.recipesList.slice());
+  }
 }

@@ -1,21 +1,26 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 
 import { ServersService } from '../servers.service';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { CanDeactivateComponent } from './can-deactivate-guard.service';
 import { Observable } from 'rxjs/internal/Observable';
+import { Subscription } from 'rxjs/internal/Subscription';
 
 @Component({
   selector: 'app-edit-server',
   templateUrl: './edit-server.component.html',
   styleUrls: ['./edit-server.component.css'],
 })
-export class EditServerComponent implements OnInit, CanDeactivateComponent {
+export class EditServerComponent
+  implements OnInit, CanDeactivateComponent, OnDestroy
+{
   server: { id: number; name: string; status: string };
   serverName = '';
   serverStatus = '';
   allowEdit = false;
   changesSaved = false;
+  subscriptionQueryparams: Subscription;
+  subscriptionFragment: Subscription;
 
   constructor(
     private serversService: ServersService,
@@ -26,10 +31,12 @@ export class EditServerComponent implements OnInit, CanDeactivateComponent {
   ngOnInit() {
     console.log(this.route.snapshot.queryParams);
     console.log(this.route.snapshot.fragment);
-    this.route.queryParams.subscribe((queryParams: Params) => {
-      this.allowEdit = queryParams['allowEdit'] == '1' ? true : false;
-    });
-    this.route.fragment.subscribe();
+    this.subscriptionQueryparams = this.route.queryParams.subscribe(
+      (queryParams: Params) => {
+        this.allowEdit = queryParams['allowEdit'] == '1' ? true : false;
+      }
+    );
+    this.subscriptionFragment = this.route.fragment.subscribe();
     this.server = this.serversService.getServer(
       +this.route.snapshot.params['id']
     );
@@ -58,5 +65,10 @@ export class EditServerComponent implements OnInit, CanDeactivateComponent {
     } else {
       return true;
     }
+  }
+
+  ngOnDestroy(): void {
+    this.subscriptionQueryparams.unsubscribe();
+    this.subscriptionFragment.unsubscribe();
   }
 }

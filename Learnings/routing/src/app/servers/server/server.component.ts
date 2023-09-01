@@ -1,15 +1,17 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 
 import { ServersService } from '../servers.service';
 import { ActivatedRoute, Data, Params, Router } from '@angular/router';
+import { Subscription } from 'rxjs/internal/Subscription';
 
 @Component({
   selector: 'app-server',
   templateUrl: './server.component.html',
   styleUrls: ['./server.component.css'],
 })
-export class ServerComponent implements OnInit {
+export class ServerComponent implements OnInit, OnDestroy {
   server: { id: number; name: string; status: string };
+  subscription: Subscription;
 
   constructor(
     private serversService: ServersService,
@@ -18,11 +20,9 @@ export class ServerComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.route.data.subscribe(
-      (data: Data) => {
-        this.server = data['server'];
-      }
-    );
+    this.subscription = this.route.data.subscribe((data: Data) => {
+      this.server = data['server'];
+    });
     // const id = +this.route.snapshot.params['id'];
     // this.server = this.serversService.getServer(id);
     // this.route.params.subscribe((params: Params) => {
@@ -35,5 +35,9 @@ export class ServerComponent implements OnInit {
       relativeTo: this.route,
       queryParamsHandling: 'preserve',
     });
+  }
+
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe();
   }
 }
