@@ -34,7 +34,7 @@ export class AppComponent implements OnInit {
     this.isFetching = true;
     this.postService.fetchData().subscribe({
       next: (posts) => {
-        // this.loadedPosts = posts;
+        this.loadedPosts = posts;
         this.isFetching = false;
       },
       error: (error) => {
